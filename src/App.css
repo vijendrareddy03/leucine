@@ -1,0 +1,10 @@
+@import '~antd/dist/antd.css';
+.App {
+  texalign: center;
+  width: 50%;
+}
+
+.body{
+
+  display: flex;
+}
