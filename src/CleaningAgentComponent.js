@@ -6,6 +6,28 @@ class CleaningAgentComponent extends Component {
     super(props)
     this.state = props.data
   }
+  resetSwab(){
+    if(this.state.swabSamplingReq){
+      console.log(this.state.swabSamplingReq);
+      let state = this.state;
+        state.swab.methodUsed = '';
+        state.swab.solventName = '';
+        state.swab.solventQuantity= '';
+        state.swab.defaultRecovery= '';
+        this.setState(state);
+      }
+    }
+    resetRinse(){
+      if(this.state.rinseSamplingReq){
+        console.log(this.state.rinseSamplingReq);
+        let state = this.state;
+          state.rinse.methodUsed = '';
+          state.rinse.solventName = '';
+          state.rinse.solventQuantity= '';
+          state.rinse.defaultRecovery= '';
+          this.setState(state);
+        }
+    }
   renderAPI() {
     return <Card>
       <Form.Item label="LOD & LOP">
@@ -13,24 +35,29 @@ class CleaningAgentComponent extends Component {
           value={this.props.data.lod}
           onChange={(e, key) => this.props.handleInputData(e, 'lod')}
           type="number"
+          min="0"
           style={{
-          width: '30%',
+          width: 'auto',
           marginRight: 8
         }}/>
         <Input
           value={this.props.data.lop}
           onChange={(e, key) => this.props.handleInputData(e, 'lop')}
           type="number"
+          min="0"
           style={{
-          width: '30%',
+          width: 'auto',
           marginRight: 8
         }}/>
       </Form.Item>
       <Button
-        type="dashed"
-        onClick={this.props.addSwabSamplingParameters}
+        type={this.props.swabSamplingReq
+        ? 'danger'
+        : 'primary'}
+        onClick={(event) => { this.props.addSwabSamplingParameters(); this.resetSwab();}  }
         style={{
-        width: 'auto'
+        width: "auto",
+        margin: "0 12px"
       }}>
         <Icon type={this.props.swabSamplingReq
           ? 'minus'
@@ -38,9 +65,12 @@ class CleaningAgentComponent extends Component {
           ? 'Remove SWAB Sampling Parameters'
           : ' Configure SWAB Sampling Parameters'}
       </Button>
+      <span></span>
       <Button
-        type="dashed"
-        onClick={this.props.addRinseSamplingParameters}
+        type={this.props.rinseSamplingReq
+        ? 'danger'
+        : 'primary'}
+        onClick={(e)=>{this.props.addRinseSamplingParameters(); this.resetRinse();}}
         style={{
         width: 'auto'
       }}>

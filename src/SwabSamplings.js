@@ -7,6 +7,7 @@ class SwabSamplings extends Component {
     super(props)
     this.state = props.data
   }
+
   renderSwab() {
     if (this.props.swabSamplingReq && ((this.props.targetResidueType === 'api') || (this.props.targetResidueType === 'cleaningAgent'))) {
       return <Card>
@@ -33,6 +34,7 @@ class SwabSamplings extends Component {
             value={this.props.data.solventQuantity}
             onChange={(e, key) => this.props.handleInputData(e, 'swab.solventQuantity')}
             type="number"
+            min="0"
             style={{
             width: '30%',
             marginRight: 8
@@ -43,6 +45,7 @@ class SwabSamplings extends Component {
             value={this.props.data.swab.defaultRecovery}
             onChange={(e, key) => this.props.handleInputData(e, 'swab.defaultRecovery')}
             type="number"
+            min="0"
             style={{
             width: '30%',
             marginRight: 8
@@ -65,6 +68,7 @@ class SwabSamplings extends Component {
             value={this.props.data.swab.defaultRecovery}
             onChange={(e, key) => this.props.handleInputData(e, 'swab.defaultRecovery')}
             type="number"
+            min="0"
             style={{
             width: '30%',
             marginRight: 8

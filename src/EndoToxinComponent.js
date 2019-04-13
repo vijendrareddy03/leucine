@@ -1,4 +1,11 @@
-import {Form, Icon, Input, Button, Radio, Card} from 'antd';
+import {
+  Form,
+  Icon,
+  Input,
+  Button,
+  Radio,
+  Card
+} from 'antd';
 import React, {Component} from 'react';
 
 let RadioGroup = Radio.Group;
@@ -7,6 +14,24 @@ class EndoToxinComponent extends Component {
     super(props)
     this.state = props.data
   }
+  resetSwab(){
+    if(this.state.swabSamplingReq){
+      console.log(this.state.swabSamplingReq);
+      let state = this.state;
+        state.swab.radioSwab = '';
+        state.swab.defaultRecovery= '';
+        this.setState(state);
+      }
+    }
+    resetRinse(){
+      if(this.state.rinseSamplingReq){
+        console.log(this.state.rinseSamplingReq);
+        let state = this.state;
+          state.rinse.radioRinse = '';
+          state.rinse.defaultRecovery= '';
+          this.setState(state);
+        }
+    }
   renderAPI() {
     return <Card>
       <Form.Item label="Method Used">
@@ -29,10 +54,13 @@ class EndoToxinComponent extends Component {
         .props
         .renderTntcTftcLimits()}
       <Button
-        type="dashed"
-        onClick={this.props.addSwabSamplingParameters}
+        type={this.props.swabSamplingReq
+        ? 'danger'
+        : 'primary'}
+        onClick={(event) => { this.props.addSwabSamplingParameters(); this.resetSwab();}  }
         style={{
-        width: 'auto'
+        width: "auto",
+        margin: "0 12px"
       }}>
         <Icon type={this.props.swabSamplingReq
           ? 'minus'
@@ -40,9 +68,12 @@ class EndoToxinComponent extends Component {
           ? 'Remove SWAB Sampling Parameters'
           : ' Configure SWAB Sampling Parameters'}
       </Button>
+      <span></span>
       <Button
-        type="dashed"
-        onClick={this.props.addRinseSamplingParameters}
+        type={this.props.rinseSamplingReq
+        ? 'danger'
+        : 'primary'}
+        onClick={(e)=>{this.props.addRinseSamplingParameters(); this.resetRinse();}}
         style={{
         width: 'auto'
       }}>

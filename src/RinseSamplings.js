@@ -33,6 +33,7 @@ class RinseSamplings extends Component {
             value={this.props.data.rinse.solventQuantity}
             onChange={(e, key) => this.props.handleInputData(e, 'rinse.solventQuantity')}
             type="number"
+            min="0"
             style={{
             width: '30%',
             marginRight: 8
@@ -43,6 +44,7 @@ class RinseSamplings extends Component {
             value={this.props.data.rinse.defaultRecovery}
             onChange={(e, key) => this.props.handleInputData(e, 'rinse.defaultRecovery')}
             type="number"
+            min="0"
             style={{
             width: '30%',
             marginRight: 8
@@ -65,6 +67,7 @@ class RinseSamplings extends Component {
             value={this.props.data.rinse.defaultRecovery}
             onChange={(e, key) => this.props.handleInputData(e, 'rinse.defaultRecovery')}
             type="number"
+            min="0"
             style={{
             width: '30%',
             marginRight: 8

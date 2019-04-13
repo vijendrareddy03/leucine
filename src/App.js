@@ -25,15 +25,15 @@ class App extends Component {
           tntcTftcReq: '',
           tntcLimit: '',
           tftcLimit: '',
-          swabSamplingReq: '',
+          swabSamplingReq: true,
           rinseSamplingReq: '',
           radioSwab: '',
           radioRinse: '',
           swab: {
-            methodUsed: '',
-            solventName: '',
-            solventQuantity: '',
-            defaultRecovery: ''
+            methodUsed: 'Simple Method',
+            solventName: 'h20 solvent',
+            solventQuantity: '150',
+            defaultRecovery: '20'
           },
           rinse: {
             methodUsed: '',
@@ -85,7 +85,18 @@ class App extends Component {
         title: 'TargetResidueType',
         dataIndex: 'targetResidueType',
         key: 'targetResidueType'
-      }, {
+      },
+      {
+        title: 'Swab Smapling Solvent Name',
+        dataIndex: 'swab.solventName',
+        key: 'swab.solventName'
+      },
+      {
+        title: 'Rinse Smapling Default recovery',
+        dataIndex: 'rinse.defaultRecovery',
+        key: 'rinse.defaultRecovery'
+      },
+       {
         title: 'Action',
         key: 'action',
         render: (text, record) => (
@@ -117,6 +128,8 @@ class App extends Component {
     this.setState({analyticmethods: methods});
     history.push('/');
   }
+
+
   render() {
     return (
       <div>

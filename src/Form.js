@@ -71,14 +71,14 @@ class DataForm extends Component {
   addSwabSamplingParameters = () => {
     this.setState({
       swabSamplingReq: !this.state.swabSamplingReq
-    });
-
+    })
   }
   addRinseSamplingParameters = () => {
     this.setState({
       rinseSamplingReq: !this.state.rinseSamplingReq
     });
   }
+  
   renderSwitch() {
     switch (this.state.targetResidueType) {
       case 'api':
@@ -141,6 +141,7 @@ class DataForm extends Component {
             value={this.state.tntcLimit}
             onChange={(e) => this.handleInputData(e, 'tntcLimit')}
             type="number"
+            min="0"
             style={{
             width: '30%',
             marginRight: 8
@@ -149,6 +150,7 @@ class DataForm extends Component {
             value={this.state.tftcLimit}
             onChange={(e) => this.handleInputData(e, 'tftcLimit')}
             type="number"
+            min="0"
             style={{
             width: '30%',
             marginRight: 8
@@ -157,14 +159,6 @@ class DataForm extends Component {
       </div>;
     }
 
-  }
-
-  routeBack() {
-    return (
-      <Router>
-        <Route path="/"></Route>
-      </Router>
-    )
   }
 
   render() {
